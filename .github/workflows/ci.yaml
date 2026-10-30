@@ -15,7 +15,7 @@ jobs:
              run: ls -la
 
            - name: Get the code 
-             run: actions/checkout@v5
+             uses: actions/checkout@v5
      
            - name: Look at the folder after checkout
              run: ls -la
