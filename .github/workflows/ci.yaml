@@ -18,14 +18,14 @@ jobs:
              run: actions/checkout@v5
      
            - name: Look at the folder after checkout
-             run:  
+             run: | 
                 echo "Repository: ${{ github. repository }}"
                 echo "Branch: ${{ github. ref_name }}"
                 echo "Commit: ${{ github.sha }}"
                 echo "Started by: ${{ github.actor }}"
 
            - name: Get facts about the machine
-             run:
+             run: |
                  uname -a
                  python3 --version
                  pip3 --version
