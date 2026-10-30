@@ -10,7 +10,7 @@ npm ci && npm start
 
 
 
-## - PLEASE NOTES
+## - PLEASE NOTE
 - 1. Create the 'napa-network' network first: 
 ```sh
     docker network create napa-network
