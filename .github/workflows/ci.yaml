@@ -1,7 +1,11 @@
 # This is the event that will trigger the workflow
+
 on:
    push:
        branches: [main]
+
+        paths_ignore:
+          - "README.md"
 
 # This is the job that the bot will run
 jobs:
