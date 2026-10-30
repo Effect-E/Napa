@@ -12,15 +12,18 @@ jobs:
              run: echo "Hello from GitHub Actions!"
 
            - name: Look at the folder before checkout
-             run: ls -latest
+             run: ls -la
 
            - name: Get the code 
              run: actions/checkout@v5
      
            - name: Look at the folder after checkout
-             run: | 
-                echo "Repository: ${{ github. repository }}"
-                echo "Branch: ${{ github. ref_name }}"
+             run: ls -la
+
+           - name: Get facts about the run
+             run: |
+                echo "Repository ${{ github.repository }}"
+                echo "Branch: ${{ github.ref_name  }}"
                 echo "Commit: ${{ github.sha }}"
                 echo "Started by: ${{ github.actor }}"
 
