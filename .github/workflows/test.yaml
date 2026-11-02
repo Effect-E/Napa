@@ -1,9 +1,9 @@
 name: "test"
 on:
-   workflow_run
-   workflows: ["HELLO ACTIONS"]
-   types: ["completed"]
-   branches: ["main"]
+   workflow_run:
+      workflows: ["HELLO ACTIONS"]
+      types: ["completed"]
+      branches: ["main"]
 permissions:
   contents: read
 
@@ -21,10 +21,9 @@ permissions:
 
         - name: Evaluate CI run outcome
           run: |
-            if [ "${{ github.event.workflow_run.name }}" = "success" ]; then
+            if [ "${{ github.event.workflow_run.conclusion }}" = "success" ]; then
               echo "CI Evaluation: PASSED" >> $GITHUB_STEP_SUMMARY
             else
               echo "CI Evaluation: FAILED" >> $GITHUB_STEP_SUMMARY
               exit 1
             fi
-            
