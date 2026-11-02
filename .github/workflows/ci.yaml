@@ -1,3 +1,5 @@
+name: "HELLO ACTIONS"
+
 # This is the event that will trigger the workflow
 on:
    push:
@@ -24,14 +26,15 @@ jobs:
 
            - name: Get facts about the run
              run: |
-                echo "Repository ${{ github.repository }}"
-                echo "Branch: ${{ github.ref_name  }}"
-                echo "Commit: ${{ github.sha }}"
-                echo "Started by: ${{ github.actor }}"
+                echo "### Run Facts " >> $GITHUB_STEP_SUMMARY
+                echo "Repository ${{ github.repository }}" >> $GITHUB_STEP-SUMMARY
+                echo "Branch: ${{ github.ref_name  }}" >> $GITHUB_STEP_SUMMARY
+                echo "Commit: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+                echo "Started by: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
 
            - name: Get facts about the machine
              run: |
-                 uname -a
-                 python3 --version
-                 pip3 --version
-                 docker --version
+                 uname -a >> $GITHUB_STEP_SUMMARY
+                 python3 --version >> $GITHUB_STEP_SUMMARY
+                 pip3 --version >> $GITHUB_STEP_SUMMARY
+                 docker --version >> $GITHUB_STEP_SUMMARY
