@@ -1,0 +1,30 @@
+name: "test"
+on:
+   workflow_run
+   workflows: ["HELLO ACTIONS"]
+   types: ["completed"]
+   branches: ["main"]
+permissions:
+  contents: read
+
+  jobs:
+    test-ci
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check triggering workflow details
+          run: |
+            echo "Workflow Name: ${{ github.event.workflow_run.name }}" >> $GITHUB_STEP_SUMMARY
+            echo "Run Status:  ${{ github.event.workflow_run.status }}" >> $GITHUB_STEP_SUMMARY
+            echo "Run Conclusion: ${{ github.event.workflow_run.conclusion }}" >> $GITHUB_STEP_SUMMARY
+            echo "Run ID: ${{ github.event.workflow_run.id }}" >> $GITHUB_STEP_SUMMARY
+            echo "Run URL: ${{ github.event.workflow_run.html_url }}" >> $GITHUB_STEP_SUMMARY
+
+        - name: Evaluate CI run outcome
+          run: |
+            if [ "${{ github.event.workflow_run.name }}" = "success" ]; then
+              echo "CI Evaluation: PASSED" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "CI Evaluation: FAILED" >> $GITHUB_STEP_SUMMARY
+              exit 1
+            fi
+            
